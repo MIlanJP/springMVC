@@ -10,7 +10,6 @@ import javax.servlet.ServletRegistration;
 public class AppConfigInitializer implements WebApplicationInitializer {
 
     public void onStartup(javax.servlet.ServletContext servletContext) throws ServletException {
-        System.out.println("Hey this is milan");
         AnnotationConfigWebApplicationContext configcontext=
                 new AnnotationConfigWebApplicationContext();
         configcontext.register(AppContext.class);
