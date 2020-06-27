@@ -1,0 +1,3 @@
+com\spingmvc\config\AppContext.class
+com\springmvc\register\HomeController.class
+com\spingmvc\config\AppConfigInitializer.class
