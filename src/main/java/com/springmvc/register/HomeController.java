@@ -1,8 +1,9 @@
 package com.springmvc.register;
 
+import com.springmvc.register.model.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 //@Component
@@ -12,8 +13,5 @@ public class HomeController {
     public String displayPage(){
         return "hello-world";
     }
-
-
-
 
 }

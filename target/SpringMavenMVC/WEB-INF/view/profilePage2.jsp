@@ -17,5 +17,6 @@
 <%= request.getParameter("uname")%>
 Printing message ${param.uname} ${ message}</h1>
 
+${user.firstName} ${user.lastName} ${user.username}
 </body>
 </html>
