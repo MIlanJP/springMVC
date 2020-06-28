@@ -13,7 +13,8 @@
 <body>
 <br>
 <br>
-Welcome To ProFile Page ${param["username"]}
+Welcome To ProFile Page ${uname}
+<%= request.getParameter("uname")%>
 
 </body>
 </html>

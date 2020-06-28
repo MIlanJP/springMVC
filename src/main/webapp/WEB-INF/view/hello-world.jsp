@@ -12,7 +12,8 @@
 </head>
 <body>
 <h2>Welcome To Spring MVC</h2>
-
+<a href="displayform">Click here to go to login form1</a>
+<a href="displayform1">Click here to go to login form2</a>
 
 </body>
 </html>

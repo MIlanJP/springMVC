@@ -1,7 +1,10 @@
 package com.springmvc.register;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class FormController {
@@ -16,5 +19,12 @@ public class FormController {
         return "profilePage";
     }
 
+
+    @RequestMapping("/profilePage2")
+    public String displayform1(HttpServletRequest request, Model model){
+        String message="Hey!!"+request.getParameter("uname");
+        model.addAttribute("message",message);
+        return "profilePage2";
+    }
 
 }

@@ -11,8 +11,8 @@
     <title>Login Form</title>
 </head>
 <body>
-<form action="profilePage" method="get" >
-    <input type="text" name="username" placeholder="Enter the username" />
+<form action="profilePage2" method="get" >
+    <input type="text" name="uname" placeholder="Enter the username" />
     <input type="password" name="password" placeholder="Enter the password"/>
     <input type="submit" value="Login" />
 </form>
