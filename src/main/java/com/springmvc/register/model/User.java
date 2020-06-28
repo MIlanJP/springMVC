@@ -1,5 +1,7 @@
 package com.springmvc.register.model;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.LinkedHashMap;
@@ -7,6 +9,9 @@ import java.util.LinkedHashMap;
 public class User {
     private String country;
 
+    @Min(value = 18 ,message="must be 18 and above")
+    @Max(value=40,message="Must Be below 41")
+    private int age;
     private String username;
 
     @NotNull(message = "Please enter the Firstname")
@@ -22,6 +27,14 @@ public class User {
 
     public String[] getHabits() {
         return habits;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public void setHabits(String[] habits) {

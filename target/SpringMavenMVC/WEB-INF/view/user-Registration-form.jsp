@@ -29,7 +29,12 @@ FirstName : <form:input path="firstName"  placeholder="Enter firstName"/>
 
     <br><br>
     UserName:<form:input  path="username"/>
-    <br><br>z
+    <br><br>
+
+    Age: <form:input path="age"  placeholder="Enter your age"/>
+    <form:errors path="age" cssClass="error"/>
+    <br><br>
+
     Country:
     <form:select path="country">
     <form:options items="${user.countryOptions}"/>
