@@ -1,5 +1,7 @@
 package com.springmvc.register.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.LinkedHashMap;
 
 public class User {
@@ -7,11 +9,24 @@ public class User {
 
     private String username;
 
+    @NotNull(message = "Please enter the Firstname")
+    @Size(min = 5,message="min 5 characters")
     private String firstName;
 
+    @NotNull(message = "Please enter the lastname")
+    @Size(min = 1,message="min 5 characters")
     private String lastName;
 
     private String password;
+    private String[] habits;
+
+    public String[] getHabits() {
+        return habits;
+    }
+
+    public void setHabits(String[] habits) {
+        this.habits = habits;
+    }
 
     private LinkedHashMap<String, String> countryOptions;
 
