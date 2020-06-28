@@ -1,5 +1,6 @@
 package com.springmvc.register;
 
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
+@PropertySource("classpath:message.properties")
 public class FormController {
 //    Manages controls  to display initial form
     @RequestMapping("/displayform")
