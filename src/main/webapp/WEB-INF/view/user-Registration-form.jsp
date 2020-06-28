@@ -13,15 +13,18 @@
 </head>
 <body>
 <%--@elvariable id="user" type="text"--%>
-<form:form action="user" modelAttribute="user">
-FirstName : <form input="text" path="firstName" required placeholder="Enter firstName"/>
+<form:form action="processform" modelAttribute="user">
+FirstName : <form:input path="firstName" required="true" placeholder="Enter firstName"/>
     <br><br>
-    LastName : <form input="text" path="lastName" required placeholder="Enter your last name" />
-
-    UserName:<form input="text" path="username" required placeholder="Enter username" />
-
-    Password:<form input="password" path="password" required placeholder="Enter your password"/>
-    <input type="submit" value="Register"
+    LastName : <form:input path="lastName" required="true" placeholder="Enter your last name" />
+    <br><br>
+    UserName:<form:input  path="username"/>
+    <br><br>z
+    Country:
+    <form:select path="country">
+    <form:options items="${user.countryOptions}"/>
+    </form:select>
+    <input type="submit" value="Register"/>
 </form:form>
 </body>
 </html>
