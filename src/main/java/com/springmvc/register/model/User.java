@@ -1,9 +1,6 @@
 package com.springmvc.register.model;
 
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.util.LinkedHashMap;
 
 public class User {
@@ -14,12 +11,15 @@ public class User {
     private int age;
     private String username;
 
+    @Pattern(regexp = "^[A-z0-9.]+[@][a-zA-Z]+[.][a-z]+")
+    private String email;
+
     @NotNull(message = "Please enter the Firstname")
     @Size(min = 5,message="min 5 characters")
     private String firstName;
 
     @NotNull(message = "Please enter the lastname")
-    @Size(min = 1,message="min 5 characters")
+    @Size(min = 2,message="min 2 characters")
     private String lastName;
 
     private String password;
@@ -27,6 +27,14 @@ public class User {
 
     public String[] getHabits() {
         return habits;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public int getAge() {

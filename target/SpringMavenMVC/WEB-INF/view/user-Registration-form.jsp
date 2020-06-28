@@ -28,6 +28,10 @@ FirstName : <form:input path="firstName"  placeholder="Enter firstName"/>
     <form:errors path="lastName" cssClass="error"/>
 
     <br><br>
+    Email :<form:input path="email" placeholder="Enter your email"/>
+    <form.errors path="email" cssClass="error"/>
+    <br><br>
+
     UserName:<form:input  path="username"/>
     <br><br>
 
