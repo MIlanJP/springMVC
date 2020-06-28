@@ -3,6 +3,7 @@ package com.springmvc.register;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -25,6 +26,12 @@ public class FormController {
         String message="Hey!!"+request.getParameter("uname");
         model.addAttribute("message",message);
         return "profilePage2";
+    }
+
+    @RequestMapping("/profilePage3")
+    public String displayform3(@RequestParam("uname")String username, Model model){
+        model.addAttribute("message","Hey "+username);
+        return "profilePage3";
     }
 
 }
