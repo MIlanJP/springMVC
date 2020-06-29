@@ -10,17 +10,65 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <style>
-        .error {
-            color: red;
-            font-family: cursive;
+    <style type="text/css">
+        body{
+            background-color:#cf6e48;
+            /*background-image:url('C:\Users\KYOOLBABAA\Desktop\New folder\LoginForm\WebContent\Phsyco.jpg');*/
+            background-size:cover;
+        }
+
+        h1{
+            background-color: #f64b07;
+            height:50px;
+            width:300px;
+            position:absolute;
+            padding:15px;
+            line-height:2;
+            color: white;
+            margin-top:60px;
+            margin-left:10%;
+            text-align:center;
+            padding-bottom:15px;
+            border:2px solid;
+            font-style:oblique;
+            font-family: sans-serif;
+            border-width:5px;
+            border-color:#ff4800;
+            border-radius:25px;
+        }
+
+        .user{
+            color:#00ffdd;
+            font-family:cursive;
+            font-size:20px;
+            position:absolute;
+            top:170px;
+            left:13%;
+        }
+        input[type=text]:focus{
+            width:300px;
+            height:50px;
+        }
+        input[type=password]:focus{
+            width:300px;
+            height:50px;
+        }
+        .error{
+            color: #0029ff;
+            font-family:cursive;
+            font-size:20px;
+            position:absolute;
+            top:200px;
+            left:50%;
         }
     </style>
-    <title>User Login Form</title>
+    <title>User Registration form</title>
 </head>
 <body>
 <%--@elvariable id="user" type="text"--%>
-<form:form action="processform" modelAttribute="user">
+<h1>Register</h1>
+<form:form action="processform" modelAttribute="user" class="user">
+
 FirstName : <form:input path="firstName"  placeholder="Enter firstName"/>
     <form:errors path="firstName" cssClass="error"/>
     <br><br>

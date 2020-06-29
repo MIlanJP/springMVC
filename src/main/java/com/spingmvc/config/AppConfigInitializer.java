@@ -19,7 +19,7 @@ public class AppConfigInitializer implements WebApplicationInitializer {
 //        Load on start up
         myservletdispacter.setLoadOnStartup(1);
 //        url mapping
-        myservletdispacter.addMapping("/");
+        myservletdispacter.addMapping("/user/");
 
     }
 }

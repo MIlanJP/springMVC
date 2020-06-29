@@ -4,6 +4,34 @@ import javax.validation.constraints.*;
 import java.util.LinkedHashMap;
 
 public class User {
+
+    public User(String username,
+                @NotNull(message = "Please enter the Firstname")
+                @Size(min = 5, message = "min 5 characters")String firstName,
+                @NotNull(message = "Please enter the lastname")
+                @Size(min = 2, message = "min 2 characters") String lastName,
+                String contactNo,
+                String password,
+                @Pattern(regexp = "^[A-z0-9.]+[@][a-zA-Z]+[.][a-z]+",
+                        message = "Invalid email") String email) {
+        this.username = username;
+        this.email = email;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.contactNo = contactNo;
+    }
+
+
+    public User() {
+        countryOptions=new LinkedHashMap<String,String>();
+        countryOptions.put("IND","INDIA");
+        countryOptions.put("USA","America");
+        countryOptions.put("FR","France");
+        countryOptions.put("BR","Brazil");
+
+    }
+
     private String country;
 
     @Min(value = 18 ,message="must be 18 and above")
@@ -26,23 +54,6 @@ public class User {
     private String[] habits;
 
     private String contactNo;
-
-    public User(String username,
-                @NotNull(message = "Please enter the Firstname")
-                @Size(min = 5, message = "min 5 characters")String firstName,
-                @NotNull(message = "Please enter the lastname")
-                @Size(min = 2, message = "min 2 characters") String lastName,
-                String contactNo,
-                 String password,
-                @Pattern(regexp = "^[A-z0-9.]+[@][a-zA-Z]+[.][a-z]+",
-            message = "Invalid email") String email) {
-        this.username = username;
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-        this.contactNo = contactNo;
-    }
 
     public String getContactNo() {
         return contactNo;
@@ -84,15 +95,6 @@ public class User {
 
     public void setCountryOptions(LinkedHashMap<String, String> countryOptions) {
         this.countryOptions = countryOptions;
-    }
-
-    public User() {
-        countryOptions=new LinkedHashMap<String,String>();
-        countryOptions.put("IND","INDIA");
-        countryOptions.put("USA","America");
-        countryOptions.put("FR","France");
-        countryOptions.put("BR","Brazil");
-
     }
 
     public String getCountry() {
