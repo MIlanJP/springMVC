@@ -58,6 +58,7 @@ public  class UserController {
         user.setPassword( req.getParameter("pass"));
         status=userService.insert(user);
         if(status) {
+            req.setAttribute("eMessage","You have Sucessfully Registered");
             return "login-form";
         }
         req.setAttribute("eMessage","Username already Taken");

@@ -55,7 +55,7 @@
             width:300px;
             height:50px;
         }
-        .successmessage{
+        .message{
             color: #ff0000;
             font-family:cursive;
             font-size:20px;
@@ -86,7 +86,7 @@
 </form>
 
 <% if(request.getAttribute("eMessage")!=null){%>
-<div class="successmessage">
+<div class="message">
 <%=request.getAttribute("eMessage")%>
 </div>
 <%}%>

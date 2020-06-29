@@ -59,8 +59,8 @@
             font-size:20px;
         }
 
-        .successmessage{
-            color: #0029ff;
+        .message{
+            color: #00ffcc;
             font-family:cursive;
             font-size:20px;
             position:absolute;
@@ -100,7 +100,7 @@ FirstName : <form:input path="firstName"  placeholder="Enter firstName"/>
 </div>
 
     <% if(request.getAttribute("eMessage")!=null){%>
-    <div class="successmessage">
+    <div class="message">
         <%=request.getAttribute("eMessage")%>
 <%--        <%session.invalidate();%>--%>
     </div>
