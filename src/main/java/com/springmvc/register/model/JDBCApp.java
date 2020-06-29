@@ -6,8 +6,8 @@ public class JDBCApp {
 
     public static void main(String[] args) {
         AnnotationConfigApplicationContext appCxt=new AnnotationConfigApplicationContext(JdbcConfigurattion.class);
-        UserJDBCDao userJDBCDao=appCxt.getBean(UserJDBCDao.class);
-        System.out.println(userJDBCDao.findAll());
-        System.out.println(userJDBCDao.findById("auror"));
+        UserDao userDao =appCxt.getBean(UserDao.class);
+        System.out.println(userDao.findAll());
+        System.out.println(userDao.findById("auror"));
     }
 }

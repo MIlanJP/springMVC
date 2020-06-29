@@ -22,21 +22,6 @@ public class User {
         this.contactNo = contactNo;
     }
 
-
-    public User() {
-        countryOptions=new LinkedHashMap<String,String>();
-        countryOptions.put("IND","INDIA");
-        countryOptions.put("USA","America");
-        countryOptions.put("FR","France");
-        countryOptions.put("BR","Brazil");
-
-    }
-
-    private String country;
-
-    @Min(value = 18 ,message="must be 18 and above")
-    @Max(value=40,message="Must Be below 41")
-    private int age;
     private String username;
 
     @Pattern(regexp = "^[A-z0-9.]+[@][a-zA-Z]+[.][a-z]+", message="Invalid email")
@@ -51,9 +36,16 @@ public class User {
     private String lastName;
 
     private String password;
-    private String[] habits;
 
+    public User() {
+    }
+
+    @NotNull(message = "Please enter the contactNo")
     private String contactNo;
+
+    public String getPassword() {
+        return password;
+    }
 
     public String getContactNo() {
         return contactNo;
@@ -63,46 +55,12 @@ public class User {
         this.contactNo = contactNo;
     }
 
-    public String[] getHabits() {
-        return habits;
-    }
-
     public String getEmail() {
         return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public void setHabits(String[] habits) {
-        this.habits = habits;
-    }
-
-    private LinkedHashMap<String, String> countryOptions;
-
-    public LinkedHashMap<String, String> getCountryOptions() {
-        return countryOptions;
-    }
-
-    public void setCountryOptions(LinkedHashMap<String, String> countryOptions) {
-        this.countryOptions = countryOptions;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 
     public void setPassword(String password) {

@@ -12,7 +12,7 @@
 <head>
     <style type="text/css">
         body{
-            background-color:#cf6e48;
+            background-color: #ff001f;
             /*background-image:url('C:\Users\KYOOLBABAA\Desktop\New folder\LoginForm\WebContent\Phsyco.jpg');*/
             background-size:cover;
         }
@@ -25,7 +25,7 @@
             padding:15px;
             line-height:2;
             color: white;
-            margin-top:60px;
+            margin-top:30px;
             margin-left:10%;
             text-align:center;
             padding-bottom:15px;
@@ -33,7 +33,7 @@
             font-style:oblique;
             font-family: sans-serif;
             border-width:5px;
-            border-color:#ff4800;
+            border-color: #01ff5c;
             border-radius:25px;
         }
 
@@ -42,7 +42,7 @@
             font-family:cursive;
             font-size:20px;
             position:absolute;
-            top:170px;
+            top:130px;
             left:13%;
         }
         input[type=text]:focus{
@@ -54,12 +54,9 @@
             height:50px;
         }
         .error{
-            color: #0029ff;
+            color: #ffffff;
             font-family:cursive;
             font-size:20px;
-            position:absolute;
-            top:200px;
-            left:50%;
         }
     </style>
     <title>User Registration form</title>
@@ -67,33 +64,30 @@
 <body>
 <%--@elvariable id="user" type="text"--%>
 <h1>Register</h1>
-<form:form action="processform" modelAttribute="user" class="user">
-
+<form:form action="gotoLoginPage" modelAttribute="user" >
+<div class="user">
 FirstName : <form:input path="firstName"  placeholder="Enter firstName"/>
     <form:errors path="firstName" cssClass="error"/>
-    <br><br>
+    <br>
     LastName : <form:input path="lastName"  placeholder="Enter your last name" />
     <form:errors path="lastName" cssClass="error"/>
 
-    <br><br>
+    <br>
     Email :<form:input path="email" placeholder="Enter your email"/>
     <form.errors path="email" cssClass="error"/>
-    <br><br>
+    <br>
 
+    ContactNo:<form:input path="contactNo" placeholder="Enter your contact"/>
+    <form:errors path="contactNo" cssClass="error"/>
+    <br>
     UserName:<form:input  path="username"/>
-    <br><br>
+    <br>
 
-    Age: <form:input path="age"  placeholder="Enter your age"/>
-    <form:errors path="age" cssClass="error"/>
-    <br><br>
-
-    Country:
-    <form:select path="country">
-    <form:options items="${user.countryOptions}"/>
-    </form:select>
-    <input type="password" placeholder="Enter the password">
+    <input type="password" name="pass" placeholder="Enter the password" required="true">
 
     <input type="submit" value="Register"/>
+</div>
+
 </form:form>
 </body>
 </html>

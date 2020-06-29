@@ -1,7 +1,9 @@
 package com.springmvc.register.controller;
 
 import com.springmvc.register.model.User;
-import com.springmvc.register.model.UserJDBCDao;
+import com.springmvc.register.model.UserDao;
+import com.sun.org.slf4j.internal.Logger;
+import com.sun.org.slf4j.internal.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
@@ -18,9 +20,10 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/user")
 public  class UserController {
+    Logger logger= LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    UserJDBCDao userJDBCDao;
+    UserDao userDao;
 
     @InitBinder
     public void initBInder(WebDataBinder databinder){
@@ -29,22 +32,25 @@ public  class UserController {
     }
 
     @RequestMapping("/")
-    public String getDetails(Model model ,HttpServletRequest req){
+    public String getDetails(Model model ){
         User user=new User();
-        user.setPassword( req.getParameter("pass"));
         model.addAttribute("user",user);
-
+        logger.toString();
+        System.out.println("Controller came to registration form");
         return "user-Registration-form";
     }
 
 
-    @RequestMapping("/processform")
-    public String processForm(@Valid @ModelAttribute("user")User user ,BindingResult bindingresult) {
+    @RequestMapping("/gotoLoginPage")
+    public String loginPage(@Valid @ModelAttribute("user")User user ,BindingResult bindingresult,HttpServletRequest req) {
         if(bindingresult.hasErrors()){
             return "user-Registration-form";
-        }else{
-            return  "profilePage2";
+        }else {
+            user.setPassword( req.getParameter("pass"));
+            userDao.insert(user);
+            return "login-form";
         }
+
     }
 
 

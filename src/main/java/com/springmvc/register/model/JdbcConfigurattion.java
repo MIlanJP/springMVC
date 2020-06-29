@@ -42,8 +42,8 @@ public class JdbcConfigurattion {
     }
 
     @Bean
-    public UserJDBCDao userDao(){
-        UserJDBCDao userDao=new UserJDBCDao();
+    public UserDao userDao(){
+        UserDao userDao=new UserDao();
         userDao.setJdbcTemplate(jdbcTemplate());
         return userDao;
     }
