@@ -20,7 +20,7 @@
         }
 
         h1{
-            background-color:coral;
+            background-color: #ff0606;
             height:50px;
             width:300px;
             position:absolute;
@@ -40,7 +40,7 @@
         }
 
         .user{
-            color:#00ffdd;
+            color: #000000;
             font-family:cursive;
             font-size:20px;
             position:absolute;
@@ -55,7 +55,7 @@
             width:300px;
             height:50px;
         }
-        .successmessage{
+        .error{
             color:#00ffdd;
             font-family:cursive;
             font-size:20px;

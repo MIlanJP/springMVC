@@ -31,7 +31,7 @@ public  class UserController {
         databinder.registerCustomEditor(String.class,stringTrimmerEditor);
     }
 
-    @RequestMapping("/")
+    @RequestMapping(value={"/","/redirectToRegisterPage"})
     public String getDetails(Model model ){
         User user=new User();
         model.addAttribute("user",user);
@@ -51,16 +51,10 @@ public  class UserController {
             return "login-form";
         }
     }
-
     @RequestMapping("/redirectToLoginPage")
     public String redirectToLoginPage() {
         return "login-form";
         }
-
-    @RequestMapping("/redirectToRegisterPage")
-    public String redirectToRegisterPage() {
-        return "user-Registration-form";
-    }
 
 
 
