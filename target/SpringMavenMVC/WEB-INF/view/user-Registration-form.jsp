@@ -43,9 +43,7 @@ FirstName : <form:input path="firstName"  placeholder="Enter firstName"/>
     <form:select path="country">
     <form:options items="${user.countryOptions}"/>
     </form:select>
-
-    Hobbies:
-
+    <input type="password" placeholder="Enter the password">
 
     <input type="submit" value="Register"/>
 </form:form>
