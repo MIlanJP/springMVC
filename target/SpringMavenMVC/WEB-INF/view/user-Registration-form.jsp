@@ -59,7 +59,7 @@
             font-size:20px;
         }
 
-        .errormessage{
+        .successmessage{
             color: #0029ff;
             font-family:cursive;
             font-size:20px;
@@ -98,6 +98,13 @@ FirstName : <form:input path="firstName"  placeholder="Enter firstName"/>
     <input type="submit" value="Register"/>
     <a href="redirectToLoginPage">Click Here To login</a>
 </div>
+
+    <% if(request.getAttribute("eMessage")!=null){%>
+    <div class="successmessage">
+        <%=request.getAttribute("eMessage")%>
+<%--        <%session.invalidate();%>--%>
+    </div>
+    <%}%>
 
 </form:form>
 

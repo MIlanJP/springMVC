@@ -62,7 +62,7 @@
 
     if(session.getAttribute("username")==null)
     {
-        response.sendRedirect("redirectToLoginPage");
+        response.sendRedirect("/profilePage");
     }
 %>
 <h1>Welcome<br>

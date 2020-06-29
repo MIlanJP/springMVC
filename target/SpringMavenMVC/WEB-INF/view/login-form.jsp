@@ -56,7 +56,7 @@
             height:50px;
         }
         .successmessage{
-            color:#00ffdd;
+            color: #ff0000;
             font-family:cursive;
             font-size:20px;
             position:absolute;
@@ -84,5 +84,11 @@
         <a href="redirectToRegisterPage">Click here to register</a>
     </div>>
 </form>
+
+<% if(request.getAttribute("eMessage")!=null){%>
+<div class="successmessage">
+<%=request.getAttribute("eMessage")%>
+</div>
+<%}%>
 </body>
 </html>

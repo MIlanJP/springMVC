@@ -50,20 +50,18 @@ public  class UserController {
 //    And switch to register page back if not sucessfull
     @RequestMapping("/gotoLoginPage")
     public String loginPage(@Valid @ModelAttribute("user")User user , BindingResult bindingresult, HttpServletRequest req,
-    Model model) {
+                            HttpSession session) throws SQLIntegrityConstraintViolationException {
+        int status=0;
         if(bindingresult.hasErrors()){
             return "user-Registration-form";
         }
-        try{
-            user.setPassword( req.getParameter("pass"));
-        userService.insert(user);
-        return "login-form";
-    }catch(Exception e){
-            if(e instanceof SQLIntegrityConstraintViolationException){
-            req.setAttribute("errorMessage","Username already Taken");
-            }
-        return "errorPage";
-    }
+        user.setPassword( req.getParameter("pass"));
+        status=userService.insert(user);
+        if(status!=0) {
+            return "login-form";
+        }
+        req.setAttribute("eMessage","Username already Taken");
+        return "user-Registration-form";
     }
 
 //        Request from switch to login page from register page
@@ -73,16 +71,22 @@ public  class UserController {
     }
 
 //    Request from login form
-    @RequestMapping("redirectToProfilePage")
-    public String redirectToProfilePage(@ModelAttribute("user")User user ,HttpServletRequest req,ModelMap map){
+    @RequestMapping("/redirectToProfilePage")
+    public String redirectToProfilePageFromLogin(@ModelAttribute("user")User user ,HttpServletRequest req,ModelMap map){
         user.setPassword(req.getParameter("pass"));
         if(userService.validateUser(user)){
             map.put("username",user.getUsername()+" Saved From Session");
             return "profilePage3";
         }
-        req.setAttribute("message","Login With Correct Credentails");
+        req.setAttribute("eMessage","Login With Correct Credentails");
         return "login-form";
     }
+
+    @RequestMapping("/profilePage")
+    public String redirectToProfilePage(){
+        return "profilePage3";
+    }
+
 
     @RequestMapping("logout")
     public String logout(HttpSession session){

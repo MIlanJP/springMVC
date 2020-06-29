@@ -11,7 +11,7 @@
     <title>Error</title>
     <style>
         .errormessage{
-            color: #0029ff;
+            color: #ffffff;
             font-family:cursive;
             font-size:20px;
             position:absolute;
