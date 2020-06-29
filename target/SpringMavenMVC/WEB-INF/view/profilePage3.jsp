@@ -31,7 +31,6 @@
     <style>
         body{
             background-color: #18ff00;
-            /*background-image:url('C:\Users\KYOOLBABAA\Desktop\New folder\LoginForm\WebContent\Phsyco.jpg');*/
             background-size:cover;
         }
 
@@ -58,8 +57,17 @@
     </style>
 </head>
 <body>
-<h1>Welcome To ProFile Page
-    ${param.username}
+<%
+    response.setHeader("Cache-Control","no-cache, no-store, must-revalidate");
+
+    if(session.getAttribute("username")==null)
+    {
+        response.sendRedirect("redirectToLoginPage");
+    }
+%>
+<h1>Welcome<br>
+   You have Logged in ${param.username}<br>
+     ${username}
 </h1>
 <a href="logout">Logout</a>
 </body>

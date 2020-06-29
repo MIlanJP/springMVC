@@ -22,6 +22,7 @@ public class User {
         this.contactNo = contactNo;
     }
 
+    @NotNull(message = "Please enter UserName")
     private String username;
 
     @Pattern(regexp = "^[A-z0-9.]+[@][a-zA-Z]+[.][a-z]+", message="Invalid email")

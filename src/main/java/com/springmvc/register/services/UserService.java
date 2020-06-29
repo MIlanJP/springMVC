@@ -1,10 +1,11 @@
 package com.springmvc.register.services;
 
 import com.springmvc.register.model.User;
-import com.springmvc.register.model.UserDao;
+import com.springmvc.register.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
+
+import java.sql.SQLIntegrityConstraintViolationException;
 
 @Service
 public class UserService {
@@ -17,7 +18,7 @@ public class UserService {
         return user.getPassword().equals(userDetails.getPassword());
     }
 
-    public void insert(User user) {
-        userDao.insert(user);
+    public int insert(User user)  {
+        return userDao.insert(user);
     }
 }

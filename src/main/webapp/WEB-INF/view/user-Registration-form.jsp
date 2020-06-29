@@ -58,6 +58,16 @@
             font-family:cursive;
             font-size:20px;
         }
+
+        .errormessage{
+            color: #0029ff;
+            font-family:cursive;
+            font-size:20px;
+            position:absolute;
+            top:200px;
+            left:50%;
+        }
+
     </style>
     <title>User Registration form</title>
 </head>
@@ -90,5 +100,7 @@ FirstName : <form:input path="firstName"  placeholder="Enter firstName"/>
 </div>
 
 </form:form>
+
+
 </body>
 </html>

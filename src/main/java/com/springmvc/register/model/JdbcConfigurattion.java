@@ -1,5 +1,6 @@
 package com.springmvc.register.model;
 
+import com.springmvc.register.dao.UserDao;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -47,6 +48,5 @@ public class JdbcConfigurattion {
         userDao.setJdbcTemplate(jdbcTemplate());
         return userDao;
     }
-
 
 }

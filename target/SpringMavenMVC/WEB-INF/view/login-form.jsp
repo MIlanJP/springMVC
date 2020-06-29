@@ -63,10 +63,6 @@
             top:200px;
             left:50%;
         }
-
-
-
-
     </style>
 </head>
 <body>
@@ -76,7 +72,7 @@
 
     if(session.getAttribute("username")!=null)
     {
-        response.sendRedirect("ProFilePage.jsp");
+        response.sendRedirect("redirectToProfilePage");
     }
 %>
 <form action="redirectToProfilePage" method="post">
@@ -84,7 +80,7 @@
     <div class="user" >
         Username:<input type="text" name="username"><br>
         Password:<input type="password" name="pass"><br>
-        <button type="submit">Login</button>
+        <button type="submit">Login</button><br>
         <a href="redirectToRegisterPage">Click here to register</a>
     </div>>
 </form>
