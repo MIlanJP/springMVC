@@ -33,11 +33,18 @@ public class UserDao {
                 new Object[]{username});
     }
 
-    public int insert(User user) {
-         return jdbcTemplate.update("INSERT INTO bridgelabz.registration_details (username,firstname,secondname,contactno" +
-                        ",password,email) VALUES (?, ?, ?, ?, ?, ?)", user.getUsername(), user.getFirstName(),
-                user.getLastName(), user.getContactNo(), user.getPassword(), user.getEmail());
-
+    public boolean insert(User user) {
+        int status=0;
+        try {
+            status = jdbcTemplate.update("INSERT INTO bridgelabz.registration_details (username,firstname,secondname,contactno" +
+                            ",password,email) VALUES (?, ?, ?, ?, ?, ?)", user.getUsername(), user.getFirstName(),
+                    user.getLastName(), user.getContactNo(), user.getPassword(), user.getEmail());
+        }catch(Exception e){
+            if(e instanceof SQLIntegrityConstraintViolationException){
+                return false;
+            }
+        }
+        return status!=0;
     }
 
 }

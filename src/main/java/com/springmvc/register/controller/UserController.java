@@ -51,13 +51,13 @@ public  class UserController {
     @RequestMapping("/gotoLoginPage")
     public String loginPage(@Valid @ModelAttribute("user")User user , BindingResult bindingresult, HttpServletRequest req,
                             HttpSession session) throws SQLIntegrityConstraintViolationException {
-        int status=0;
+        boolean status=false;
         if(bindingresult.hasErrors()){
             return "user-Registration-form";
         }
         user.setPassword( req.getParameter("pass"));
         status=userService.insert(user);
-        if(status!=0) {
+        if(status) {
             return "login-form";
         }
         req.setAttribute("eMessage","Username already Taken");

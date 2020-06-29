@@ -18,7 +18,7 @@ public class UserService {
         return user.getPassword().equals(userDetails.getPassword());
     }
 
-    public int insert(User user)  {
+    public boolean insert(User user) throws SQLIntegrityConstraintViolationException {
         return userDao.insert(user);
     }
 }
