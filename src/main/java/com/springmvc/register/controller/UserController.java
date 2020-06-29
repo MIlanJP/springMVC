@@ -50,8 +50,20 @@ public  class UserController {
             userDao.insert(user);
             return "login-form";
         }
+    }
+
+    @RequestMapping("/redirectToLoginPage")
+    public String redirectToLoginPage() {
+        return "login-form";
+        }
+
+    @RequestMapping("/redirectToRegisterPage")
+    public String redirectToRegisterPage() {
+        return "user-Registration-form";
+    }
+
+
 
     }
 
 
-}

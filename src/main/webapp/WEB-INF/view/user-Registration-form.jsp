@@ -86,6 +86,7 @@ FirstName : <form:input path="firstName"  placeholder="Enter firstName"/>
     <input type="password" name="pass" placeholder="Enter the password" required="true">
 
     <input type="submit" value="Register"/>
+    <a href="redirectToLoginPage">Click Here To login</a>
 </div>
 
 </form:form>
