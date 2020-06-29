@@ -2,6 +2,7 @@ package com.springmvc.register.controller;
 
 import com.springmvc.register.model.User;
 import com.springmvc.register.model.UserDao;
+import com.springmvc.register.services.UserService;
 import com.sun.org.slf4j.internal.Logger;
 import com.sun.org.slf4j.internal.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public  class UserController {
     Logger logger= LoggerFactory.getLogger(UserController.class);
 
     @Autowired
-    UserDao userDao;
+    UserService userService;
 
     @InitBinder
     public void initBInder(WebDataBinder databinder){
@@ -36,7 +37,6 @@ public  class UserController {
         User user=new User();
         model.addAttribute("user",user);
         logger.toString();
-        System.out.println("Controller came to registration form");
         return "user-Registration-form";
     }
 
@@ -47,17 +47,31 @@ public  class UserController {
             return "user-Registration-form";
         }else {
             user.setPassword( req.getParameter("pass"));
-            userDao.insert(user);
+            userService.insert(user);
             return "login-form";
+            }
         }
-    }
     @RequestMapping("/redirectToLoginPage")
     public String redirectToLoginPage() {
         return "login-form";
-        }
-
-
-
     }
+
+    @RequestMapping("redirectToProfilePage")
+    public String redirectToProfilePage(@ModelAttribute("user")User user ,HttpServletRequest req){
+        user.setPassword(req.getParameter("pass"));
+        if(userService.validateUser(user)){
+            return "profilePage3";
+        }else{
+            return "login-form";
+        }
+    }
+
+
+    @RequestMapping("logout")
+    public String logout(){
+            return "login-form";
+    }
+
+}
 
 

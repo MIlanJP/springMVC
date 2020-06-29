@@ -7,20 +7,20 @@
 --%>
 
 <%-- Created by IntelliJ IDEA. --%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Login Page</title>
     <style type="text/css">
         body{
-            background-color: #ffe700;
+            background-color: #fffa00;
             /*background-image:url('C:\Users\KYOOLBABAA\Desktop\New folder\LoginForm\WebContent\Phsyco.jpg');*/
             background-size:cover;
         }
 
         h1{
-            background-color: #ff0606;
+            background-color:coral;
             height:50px;
             width:300px;
             position:absolute;
@@ -35,7 +35,7 @@
             font-style:oblique;
             font-family: sans-serif;
             border-width:5px;
-            border-color:#ff4800;
+            border-color: #fff40a;
             border-radius:25px;
         }
 
@@ -55,7 +55,7 @@
             width:300px;
             height:50px;
         }
-        .error{
+        .successmessage{
             color:#00ffdd;
             font-family:cursive;
             font-size:20px;
@@ -79,7 +79,7 @@
         response.sendRedirect("ProFilePage.jsp");
     }
 %>
-<form action="login" method="post">
+<form action="redirectToProfilePage" method="post">
     <h1>Login</h1>
     <div class="user" >
         Username:<input type="text" name="username"><br>
@@ -90,4 +90,3 @@
 </form>
 </body>
 </html>
-
