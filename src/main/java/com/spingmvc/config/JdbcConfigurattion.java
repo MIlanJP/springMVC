@@ -1,4 +1,4 @@
-package com.springmvc.register.model;
+package com.spingmvc.config;
 
 import com.springmvc.register.dao.UserDao;
 import org.springframework.beans.factory.annotation.Value;

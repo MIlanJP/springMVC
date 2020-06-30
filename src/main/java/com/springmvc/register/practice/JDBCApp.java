@@ -1,7 +1,7 @@
 package com.springmvc.register.practice;
 
 import com.springmvc.register.dao.UserDao;
-import com.springmvc.register.model.JdbcConfigurattion;
+import com.spingmvc.config.JdbcConfigurattion;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class JDBCApp {
