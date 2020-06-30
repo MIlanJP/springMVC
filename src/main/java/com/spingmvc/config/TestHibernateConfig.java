@@ -18,10 +18,11 @@ public class TestHibernateConfig {
 
     public static void main(String[] args) {
     TestHibernateConfig testHibernateConfig=new TestHibernateConfig();
-//      testHibernateConfig.createObject();
-//      testHibernateConfig.readObject();
-//      testHibernateConfig.query("milano");
+        testHibernateConfig.createObject();
+        testHibernateConfig.readObject();
+        testHibernateConfig.query("milano");
         testHibernateConfig.update("milano","kumar");
+        testHibernateConfig.delete("rahulo");
     }
 
     public void createObject(){
@@ -73,6 +74,25 @@ public class TestHibernateConfig {
             session.close();
         }
     }
+
+    public void delete(String username){
+        transaction=null;
+//                Creating session
+        Session session=sessionFactory.getCurrentSession();
+        transaction=session.beginTransaction();
+//        Creating Object
+        try{
+            HUser user = (HUser) session.createQuery("from HUser s where s.username='" + username + "'").list().get(0);
+            session.delete(user);
+            transaction.commit();
+        }catch(HibernateException e){
+            if(transaction!=null) transaction.rollback();
+            e.printStackTrace();
+        }finally{
+            session.close();
+        }
+    }
+
 
 
     public void query(String username){
