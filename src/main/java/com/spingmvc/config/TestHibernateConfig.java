@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import java.util.*;
+
 public class TestHibernateConfig {
 
     //        Creating session Factory
@@ -16,8 +18,9 @@ public class TestHibernateConfig {
 
     public static void main(String[] args) {
     TestHibernateConfig testHibernateConfig=new TestHibernateConfig();
-//    testHibernateConfig.createObject();
-    testHibernateConfig.readObject();
+//      testHibernateConfig.createObject();
+//      testHibernateConfig.readObject();
+        testHibernateConfig.query("milano");
     }
 
     public void createObject(){
@@ -54,11 +57,18 @@ public class TestHibernateConfig {
         }
     }
 
-//    public void query(){
-//        transaction=null;
-//        Session session=sessionFactory.getCurrentSession();
-//        transaction=session.beginTransaction();
-//        List<>session.createQuery()
-//    }
+    public void query(String username){
+        transaction=null;
+        Session session=sessionFactory.getCurrentSession();
+        transaction=session.beginTransaction();
+        try {
+            List<HUser> listOfUsers = session.createQuery("from HUser s where s.username='" + username + "'").list();
+            System.out.println(listOfUsers.get(0));
+            transaction.commit();
+        }catch(HibernateException e){
+            if(transaction!=null)transaction.rollback();
+            e.printStackTrace();
+        }
+    }
 
 }
