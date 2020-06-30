@@ -20,7 +20,8 @@ public class TestHibernateConfig {
     TestHibernateConfig testHibernateConfig=new TestHibernateConfig();
 //      testHibernateConfig.createObject();
 //      testHibernateConfig.readObject();
-        testHibernateConfig.query("milano");
+//      testHibernateConfig.query("milano");
+        testHibernateConfig.update("milano","kumar");
     }
 
     public void createObject(){
@@ -56,6 +57,23 @@ public class TestHibernateConfig {
             session.close();
         }
     }
+
+    public void update(String username,String lastname){
+        transaction=null;
+        Session session=sessionFactory.getCurrentSession();
+        transaction=session.beginTransaction();
+        try {
+            HUser user = (HUser) session.createQuery("from HUser s where s.username='" + username + "'").list().get(0);
+            user.setLastName(lastname);
+            transaction.commit();
+        }catch (HibernateException e){
+            if(transaction!=null)transaction.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
+    }
+
 
     public void query(String username){
         transaction=null;
