@@ -89,9 +89,10 @@ public  class UserController {
     }
 
 
-    @RequestMapping("logout")
-    public String logout(HttpSession session){
+    @RequestMapping("/logout")
+    public String logout(HttpSession session,HttpServletRequest req){
         session.invalidate();
+        req.setAttribute("eMessage","You have Logged Out Sucessfully");
         return "login-form";
     }
 
