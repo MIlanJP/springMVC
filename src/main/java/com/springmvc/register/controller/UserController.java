@@ -23,7 +23,6 @@ import javax.validation.Valid;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 @SessionAttributes("username")
-@HttpConstraint
 @Controller
 @RequestMapping("/user")
 public  class UserController {
@@ -51,6 +50,7 @@ public  class UserController {
     @RequestMapping("/gotoLoginPage")
     public String loginPage(@Valid @ModelAttribute("user")User user , BindingResult bindingresult, HttpServletRequest req,
                             HttpSession session) throws SQLIntegrityConstraintViolationException {
+
         boolean status=false;
         if(bindingresult.hasErrors()){
             return "user-Registration-form";
@@ -73,7 +73,11 @@ public  class UserController {
 
 //    Request from login form
     @RequestMapping("/redirectToProfilePage")
-    public String redirectToProfilePageFromLogin(@ModelAttribute("user")User user ,HttpServletRequest req,ModelMap map){
+    public String redirectToProfilePageFromLogin(@ModelAttribute("user")User user ,HttpServletRequest req,ModelMap map,
+                                                 HttpSession session){
+        if(session.getAttribute("username")!=null){
+            return "profilePage3";
+        }
         user.setPassword(req.getParameter("pass"));
         if(userService.validateUser(user)){
             map.put("username",user.getUsername()+" Saved From Session");

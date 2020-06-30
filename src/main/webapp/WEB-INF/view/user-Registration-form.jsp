@@ -12,7 +12,7 @@
 <head>
     <style type="text/css">
         body{
-            background-color: #ff001f;
+            background-color: #fff005;
             /*background-image:url('C:\Users\KYOOLBABAA\Desktop\New folder\LoginForm\WebContent\Phsyco.jpg');*/
             background-size:cover;
         }
