@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import javax.servlet.annotation.HttpConstraint;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -48,7 +47,7 @@ public  class UserController {
 //Request from Register page after registration is sucessfull
 //    And switch to register page back if not sucessfull
     @RequestMapping("/gotoLoginPage")
-    public String loginPage(@Valid @ModelAttribute("user")User user , BindingResult bindingresult, HttpServletRequest req,
+    public String loginPage(@Valid @ModelAttribute("user") User user , BindingResult bindingresult, HttpServletRequest req,
                             HttpSession session) throws SQLIntegrityConstraintViolationException {
 
         boolean status=false;
@@ -73,7 +72,7 @@ public  class UserController {
 
 //    Request from login form
     @RequestMapping("/redirectToProfilePage")
-    public String redirectToProfilePageFromLogin(@ModelAttribute("user")User user ,HttpServletRequest req,ModelMap map,
+    public String redirectToProfilePageFromLogin(@ModelAttribute("user") User user , HttpServletRequest req, ModelMap map,
                                                  HttpSession session){
         if(session.getAttribute("username")!=null){
             return "profilePage3";
