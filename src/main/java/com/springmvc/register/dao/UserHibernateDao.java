@@ -81,18 +81,21 @@ public class UserHibernateDao {
         }
     }
 
-    public void query(String username){
+    public HUser query(String username){
         transaction=null;
+        HUser user=null;
         Session session=sessionFactory.getCurrentSession();
         transaction=session.beginTransaction();
         try {
-            List<HUser> listOfUsers = session.createQuery("from HUser s where s.username='" + username + "'").list();
-            System.out.println(listOfUsers.get(0));
+             user = (HUser) session.createQuery("from HUser s where s.username='" + username + "'").list().get(0);
             transaction.commit();
         }catch(HibernateException e){
             if(transaction!=null)transaction.rollback();
             e.printStackTrace();
+        }finally{
+            session.close();
         }
+        return user;
     }
 
 }

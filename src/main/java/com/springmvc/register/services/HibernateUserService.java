@@ -15,11 +15,12 @@ public class HibernateUserService {
         userHibernateDao.insertUser(user);
     }
 
-
-
     public void deleteUser(String username){
         userHibernateDao.delete(username);
     }
 
+    public int query(String username){
+        return userHibernateDao.query(username).getId();
+    }
 
 }
