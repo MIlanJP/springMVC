@@ -1,7 +1,10 @@
 package com.restexamples.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Arrays;
 
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class User {
     private int id;
     private String firstName;

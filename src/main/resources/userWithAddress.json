@@ -12,6 +12,7 @@
     "pincode":"560096",
     "country": "India"
   },
-  "favMovies": ["KGF1","ABCD","KBC"]
+  "favMovies": ["KGF1","ABCD","KBC"],
+  "mast": "me"
 
 }
