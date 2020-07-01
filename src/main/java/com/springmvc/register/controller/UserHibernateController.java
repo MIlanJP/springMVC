@@ -1,7 +1,8 @@
 package com.springmvc.register.controller;
 
+import com.springmvc.register.model.HUser;
 import com.springmvc.register.model.User;
-import com.springmvc.register.services.UserService;
+import com.springmvc.register.services.HibernateUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +24,12 @@ import java.sql.SQLIntegrityConstraintViolationException;
 
 @SessionAttributes("username")
 @Controller
-@RequestMapping("/user")
-public  class UserController {
-    Logger logger= LoggerFactory.getLogger(UserController.class);
+@RequestMapping("/userhibernate")
+public  class UserHibernateController {
+    Logger logger= LoggerFactory.getLogger(UserHibernateController.class);
 
     @Autowired
-    UserService userService;
-
+    HibernateUserService hibernateUserService;
 
     @InitBinder
     public void initBInder(WebDataBinder databinder){
@@ -48,15 +48,15 @@ public  class UserController {
 //Request from Register page after registration is sucessfull
 //    And switch to register page back if not sucessfull
     @RequestMapping("/gotoLoginPage")
-    public String loginPage(@Valid @ModelAttribute("user") User user , BindingResult bindingresult, HttpServletRequest req,
-                            HttpSession session) throws SQLIntegrityConstraintViolationException {
+    public String loginPage(@Valid @ModelAttribute("user") HUser user , BindingResult bindingresult, HttpServletRequest req,
+                            HttpSession session)  {
 
         boolean status=false;
         if(bindingresult.hasErrors()){
             return "user-Registration-form";
         }
         user.setPassword( req.getParameter("pass"));
-        status=userService.insert(user);
+        status=hibernateUserService.insertUser(user);
         if(status) {
             req.setAttribute("eMessage","You have Sucessfully Registered");
             return "login-form";
@@ -73,13 +73,13 @@ public  class UserController {
 
 //    Request from login form
     @RequestMapping("/redirectToProfilePage")
-    public String redirectToProfilePageFromLogin(@ModelAttribute("user") User user , HttpServletRequest req, ModelMap map,
+    public String redirectToProfilePageFromLogin(@ModelAttribute("user") HUser user , HttpServletRequest req, ModelMap map,
                                                  HttpSession session){
         if(session.getAttribute("username")!=null){
             return "profilePage3";
         }
         user.setPassword(req.getParameter("pass"));
-        if(userService.validateUser(user)){
+        if(hibernateUserService.validateUser(user.getUsername())!=0){
             map.put("username",user.getUsername()+" Saved From Session");
             return "profilePage3";
         }

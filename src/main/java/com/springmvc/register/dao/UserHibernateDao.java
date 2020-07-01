@@ -8,6 +8,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
 
 @Repository
@@ -17,8 +18,9 @@ public class UserHibernateDao {
             addAnnotatedClass(HUser.class).buildSessionFactory();
     Transaction transaction;
 
-    public void insertUser(HUser user){
+    public boolean insertUser(HUser user){
         transaction=null;
+
         Session session=sessionFactory.getCurrentSession();
          transaction=session.beginTransaction();
         try {
@@ -27,9 +29,13 @@ public class UserHibernateDao {
         }catch(HibernateException e){
             if(transaction!=null)transaction.rollback();
             e.printStackTrace();
+        }catch(Exception e){
+            if(e instanceof SQLIntegrityConstraintViolationException)
+                return false;
         }finally{
             session.close();
         }
+        return true;
     }
 
     private void readObject() {
@@ -81,7 +87,7 @@ public class UserHibernateDao {
         }
     }
 
-    public HUser query(String username){
+    public int query(String username){
         transaction=null;
         HUser user=null;
         Session session=sessionFactory.getCurrentSession();
@@ -92,10 +98,12 @@ public class UserHibernateDao {
         }catch(HibernateException e){
             if(transaction!=null)transaction.rollback();
             e.printStackTrace();
+        }catch(ArrayIndexOutOfBoundsException e){
+            return 0;
         }finally{
             session.close();
         }
-        return user;
+        return user.getId();
     }
 
 }

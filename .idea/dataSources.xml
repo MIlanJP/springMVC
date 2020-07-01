@@ -7,5 +7,23 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://localhost:3306/bridgelabz?serverTimezone=UTC</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="SpringMavenMVC/Hibernate" uuid="23736646-7b71-404f-bd79-02673c37c1b5">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/bridgelabz</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="da8efb1e-7885-4b59-953a-3112bc1b9533">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+C:/Users/KYOOLBABAA/IdeaProjects/SpringMavenMVC/src/main/resources/hibernate.cfg.xml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost/bridgelabz</jdbc-url>
+    </data-source>
   </component>
 </project>

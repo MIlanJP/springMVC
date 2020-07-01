@@ -11,16 +11,12 @@ public class HibernateUserService {
     @Autowired
     UserHibernateDao userHibernateDao;
 
-    public void insertUser(HUser user){
-        userHibernateDao.insertUser(user);
+    public boolean insertUser(HUser user){
+        return userHibernateDao.insertUser(user);
     }
 
-    public void deleteUser(String username){
-        userHibernateDao.delete(username);
-    }
-
-    public int query(String username){
-        return userHibernateDao.query(username).getId();
+    public int validateUser(String username){
+        return userHibernateDao.query(username);
     }
 
 }

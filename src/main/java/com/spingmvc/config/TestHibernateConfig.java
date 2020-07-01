@@ -19,10 +19,10 @@ public class TestHibernateConfig {
     public static void main(String[] args) {
     TestHibernateConfig testHibernateConfig=new TestHibernateConfig();
         testHibernateConfig.createObject();
-        testHibernateConfig.readObject();
-        testHibernateConfig.query("milano");
-        testHibernateConfig.update("milano","kumar");
-        testHibernateConfig.delete("rahulo");
+//        testHibernateConfig.readObject();
+//        testHibernateConfig.query("milo");
+//        testHibernateConfig.update("milano","kumar");
+//        testHibernateConfig.delete("rahulo");
     }
 
     public void createObject(){
@@ -33,7 +33,7 @@ public class TestHibernateConfig {
 //        Creating Object
         try{
             HUser user=
-                    new HUser("vikram","Singh","rahul@gmail.com","rahul@1234","vikram");
+                    new HUser("vikram","Singh","rahul@gmail.com","rahul@1234","milano");
             session.save(user);
             transaction.commit();
         }catch(HibernateException e){
@@ -101,7 +101,7 @@ public class TestHibernateConfig {
         transaction=session.beginTransaction();
         try {
             List<HUser> listOfUsers = session.createQuery("from HUser s where s.username='" + username + "'").list();
-            System.out.println(listOfUsers.get(0));
+            System.out.println(listOfUsers.size()==0);
             transaction.commit();
         }catch(HibernateException e){
             if(transaction!=null)transaction.rollback();
