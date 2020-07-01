@@ -23,19 +23,22 @@ public class UserHibernateDao {
 
         Session session=sessionFactory.getCurrentSession();
          transaction=session.beginTransaction();
+         boolean status=false;
         try {
             session.save(user);
             transaction.commit();
+            status=true;
         }catch(HibernateException e){
+            status=false;
             if(transaction!=null)transaction.rollback();
             e.printStackTrace();
         }catch(Exception e){
             if(e instanceof SQLIntegrityConstraintViolationException)
-                return false;
+                status=false;
         }finally{
             session.close();
         }
-        return true;
+        return status;
     }
 
     private void readObject() {
@@ -90,20 +93,22 @@ public class UserHibernateDao {
     public int query(String username){
         transaction=null;
         HUser user=null;
+        int status=0;
         Session session=sessionFactory.getCurrentSession();
         transaction=session.beginTransaction();
         try {
              user = (HUser) session.createQuery("from HUser s where s.username='" + username + "'").list().get(0);
             transaction.commit();
+            status=user.getId();
         }catch(HibernateException e){
             if(transaction!=null)transaction.rollback();
             e.printStackTrace();
         }catch(ArrayIndexOutOfBoundsException e){
-            return 0;
+           status=0;
         }finally{
             session.close();
         }
-        return user.getId();
+        return status;
     }
 
 }

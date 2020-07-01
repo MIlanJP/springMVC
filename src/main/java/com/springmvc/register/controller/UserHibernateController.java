@@ -79,8 +79,10 @@ public  class UserHibernateController {
             return "profilePage3";
         }
         user.setPassword(req.getParameter("pass"));
-        if(hibernateUserService.validateUser(user.getUsername())!=0){
+        int id=hibernateUserService.validateUser(user.getUsername());
+        if(id!=0){
             map.put("username",user.getUsername()+" Saved From Session");
+            map.put("id",id);
             return "profilePage3";
         }
         req.setAttribute("eMessage","Login With Correct Credentails");

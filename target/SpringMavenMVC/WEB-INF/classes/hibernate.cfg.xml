@@ -1,0 +1,40 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+
+        <property name = "hibernate.dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+
+<!--        Setting the number pf connections to be open-->
+        <property name="connection.pool_size">1</property>
+
+        <property name = "hibernate.connection.driver_class">
+            com.mysql.cj.jdbc.Driver
+        </property>
+
+        <!-- Assume test is the database name -->
+
+        <property name = "hibernate.connection.url">
+            jdbc:mysql://localhost/bridgelabz
+        </property>
+
+        <property name = "hibernate.connection.username">
+            root
+        </property>
+
+        <property name = "hibernate.connection.password">
+            root
+        </property>
+<!--HIbernate Prints out the data entered into the database -->
+        <property name="show_sql">true</property>
+
+<!--        For this current session context setting the threaded model  -->
+<property name="current_session_context_class">thread</property>
+        <!-- List of XML mapping files -->
+<!--        <mapping resource = "Employee.hbm.xml"/>-->
+
+    </session-factory>
+</hibernate-configuration>

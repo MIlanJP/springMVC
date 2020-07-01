@@ -87,8 +87,8 @@ FirstName : <form:input path="firstName"  placeholder="Enter firstName"/>
     <form.errors path="email" cssClass="error"/>
     <br>
 
-    ContactNo:<form:input path="contactNo" placeholder="Enter your contact"/>
-    <form:errors path="contactNo" cssClass="error"/>
+<%--    ContactNo:<form:input path="contactNo" placeholder="Enter your contact"/>--%>
+<%--    <form:errors path="contactNo" cssClass="error"/>--%>
     <br>
     UserName:<form:input  path="username"/>
     <br>
