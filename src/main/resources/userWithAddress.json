@@ -1,0 +1,17 @@
+{
+  "id":101,
+  "firstName": "Milan",
+  "secondName":"Gowda",
+  "email": "milan.gowda@gmail.com",
+  "username": "milano",
+  "password": "123456",
+  "address": {
+    "street": "Raja Street",
+    "city": "Bangalore",
+    "state": "Karnataka",
+    "pincode":"560096",
+    "country": "India"
+  },
+  "favMovies": ["KGF1","ABCD","KBC"]
+
+}

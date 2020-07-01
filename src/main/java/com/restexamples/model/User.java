@@ -1,5 +1,7 @@
 package com.restexamples.model;
 
+import java.util.Arrays;
+
 public class User {
     private int id;
     private String firstName;
@@ -7,6 +9,24 @@ public class User {
     private String email;
     private String username;
     private String password;
+    private Address address;
+    private String[] favMovies;
+
+    public String[] getFavMovies() {
+        return favMovies;
+    }
+
+    public void setFavMovies(String[] favMovies) {
+        this.favMovies = favMovies;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public int getId() {
         return id;
@@ -61,10 +81,12 @@ public class User {
         return "User{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
-                ", lastName='" + secondName + '\'' +
+                ", secondName='" + secondName + '\'' +
                 ", email='" + email + '\'' +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
+                ", address=" + address +
+                ", favMovies=" + Arrays.toString(favMovies) +
                 '}';
     }
 }
